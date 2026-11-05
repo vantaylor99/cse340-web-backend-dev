@@ -91,6 +91,25 @@ main a:focus {
   color: #1a365d;
 }
 
+/* Project list */
+main .project-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.project-list li {
+  margin-bottom: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+}
+
+.project-list .project-date,
+.project-list em {
+  color: #4a5568;
+}
+
 /* Home page logo */
 .main-logo {
   display: block;

@@ -3,10 +3,14 @@
         <h1>
             <%= title %>
         </h1>
-        <ul>
-            <li>Park Cleanup - Join us to clean up local parks and make them beautiful!</li>
-            <li>Food Drive - Help collect and distribute food to those in need.</li>
-            <li>Community Tutoring - Volunteer to tutor students in various subjects.</li>
+        <ul class="project-list">
+            <% projects.forEach(project => { %>
+                <li>
+                    <span class="project-date"><%= project.date.toLocaleDateString('en-US', { dateStyle: 'medium' }) %>:</span>
+                    <strong><%= project.title %></strong>
+                    <em>(<%= project.organization_name %>)</em>
+                </li>
+            <% }); %>
         </ul>
     </main>
     <%- include('partials/footer') %>
