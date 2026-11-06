@@ -27,7 +27,7 @@ VALUES                    ('BrightFuture Builders', 'A nonprofit focused on impr
 -- ========================================
 CREATE TABLE service_projects (
     project_id      SERIAL        PRIMARY KEY,
-    organization_id INT           NOT NULL REFERENCES organization (organization_id),
+    organization_id INT           NOT NULL FOREIGN KEY REFERENCES organization (organization_id),
     title           VARCHAR (150) NOT NULL,
     description     TEXT          NOT NULL,
     location        TEXT          NOT NULL,
@@ -78,34 +78,41 @@ CREATE TABLE categories (
 );
 
 CREATE TABLE service_project_categories (
-    project_id  INT REFERENCES service_projects (project_id),
-    category_id INT REFERENCES categories (category_id),
+    project_id  INT FOREIGN KEY REFERENCES service_projects (project_id),
+    category_id INT FOREIGN KEY REFERENCES categories (category_id),
     PRIMARY KEY (project_id, category_id)
 );
 
 -- ========================================
 -- Insert Sample Data: Categories
 -- ========================================
-INSERT INTO categories (name)
-VALUES ('Construction & Repairs'),
-       ('Food & Gardening'),
-       ('Education'),
-       ('Community Support');
+INSERT  INTO categories (
+    name
+)
+VALUES                  ('Construction & Repairs'),
+                        ('Food & Gardening'),
+                        ('Education'),
+                        ('Community Support');
 
 -- Link seed projects using the IDs assigned in insert order above.
-INSERT INTO service_project_categories (project_id, category_id)
-VALUES (1, 1),  -- Community Playground Construction
-       (2, 1),  -- Affordable Housing Renovation
-       (3, 1),  -- Community Center Repairs
-       (4, 1),  -- Park Bench Installation
-       (5, 1),  -- Neighborhood Cleanup and Repairs
-       (6, 2),  -- Community Garden Planting
-       (7, 2), (7, 3),  -- Urban Farming Workshop
-       (8, 2), (8, 3),  -- School Garden Development
-       (9, 3),  -- Composting Education Event
-       (10, 2), -- Farm-to-Table Community Harvest
-       (11, 4), -- Food Bank Volunteer Day
-       (12, 4), -- Winter Clothing Drive
-       (13, 4), -- Senior Citizen Assistance
-       (14, 4), -- Holiday Gift Distribution
-       (15, 3); -- Community Literacy Program
+INSERT  INTO service_project_categories (
+    project_id,
+    category_id
+)
+VALUES                                  (1, 1), -- Community Playground Construction
+                                        (2, 1), -- Affordable Housing Renovation
+                                        (3, 1), -- Community Center Repairs
+                                        (4, 1), -- Park Bench Installation
+                                        (5, 1), -- Neighborhood Cleanup and Repairs
+                                        (6, 2), -- Community Garden Planting
+                                        (7, 2),
+                                        (7, 3), -- Urban Farming Workshop
+                                        (8, 2),
+                                        (8, 3), -- School Garden Development
+                                        (9, 3), -- Composting Education Event
+                                        (10, 2), -- Farm-to-Table Community Harvest
+                                        (11, 4), -- Food Bank Volunteer Day
+                                        (12, 4), -- Winter Clothing Drive
+                                        (13, 4), -- Senior Citizen Assistance
+                                        (14, 4), -- Holiday Gift Distribution
+                                        (15, 3); -- Community Literacy Program
