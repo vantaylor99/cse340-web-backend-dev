@@ -4,13 +4,19 @@
             <%= title %>
         </h1>
         <ul class="project-list">
-            <% projects.forEach(project => { %>
+            <% projects.forEach(project=> { %>
                 <li>
-                    <span class="project-date"><%= project.date.toLocaleDateString('en-US', { dateStyle: 'medium' }) %>:</span>
-                    <strong><%= project.title %></strong>
-                    <em>(<%= project.organization_name %>)</em>
+                    <span class="project-date">
+                        <%= project.date.toLocaleDateString('en-US', { dateStyle: 'medium' }) %>:
+                    </span>
+                    <a href="/project/<%= project.project_id %>"><strong>
+                            <%= project.title %>
+                        </strong></a>
+                    <a class="project-organization" href="/organization/<%= project.organization_id %>"><em>(<%=
+                                project.organization_name %>
+                                )</em></a>
                 </li>
-            <% }); %>
+                <% }); %>
         </ul>
     </main>
     <%- include('partials/footer') %>
