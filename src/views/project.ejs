@@ -18,8 +18,14 @@
             <strong>Location</strong>
             <%= project.location %>
         </p>
+
         <a href="/organization/<%= project.organization_id %>">
             <%= project.organization_name %>
         </a>
+        <% categories.forEach(category=> { %>
+            <a href="/category/<%= category.category_id %>">
+                <%= category.name %>
+            </a>
+            <% }); %>
     </main>
     <%- include('partials/footer') %>
