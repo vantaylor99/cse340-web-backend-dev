@@ -145,6 +145,32 @@ main .project-list {
   text-decoration: underline;
 }
 
+/* Category tags on project details */
+.category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.category-tags a {
+  text-decoration: none;
+  max-width: 100%;
+  padding: 0.25rem 0.75rem;
+  background-color: #ebf4ff;
+  border: 1px solid #cbd5e0;
+  border-radius: 999px;
+  color: #1a365d;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.category-tags a:hover,
+.category-tags a:focus-visible {
+  background-color: #dbeafe;
+}
+
 /* Home page logo */
 .main-logo {
   display: block;

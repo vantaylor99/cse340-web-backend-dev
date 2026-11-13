@@ -12,20 +12,26 @@
         </p>
         <p>
             <strong>Date:</strong>
-            <%= project.date %>
+            <%= project.date.toLocaleDateString('en-US', { dateStyle: 'medium' }) %>
         </p>
         <p>
-            <strong>Location</strong>
+            <strong>Location:</strong>
             <%= project.location %>
         </p>
-
-        <a href="/organization/<%= project.organization_id %>">
-            <%= project.organization_name %>
-        </a>
-        <% categories.forEach(category=> { %>
-            <a href="/category/<%= category.category_id %>">
-                <%= category.name %>
+        <p><strong>Organization:</strong>
+            <a href="/organization/<%= project.organization_id %>">
+                <%= project.organization_name %>
             </a>
-            <% }); %>
+        </p>
+
+        <div class="category-tags">
+            <strong>Categories:</strong>
+            <% categories.forEach(category=> { %>
+                <a href="/category/<%= category.category_id %>">
+                    <%= category.name %>
+                </a>
+                <% }); %>
+        </div>
+
     </main>
     <%- include('partials/footer') %>
