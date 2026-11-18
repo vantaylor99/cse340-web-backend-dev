@@ -19,3 +19,13 @@
             <li><a href="/categories">Service Project Categories</a></li>
         </ul>
     </nav>
+    <% const messages=flash(); %>
+        <% Object.keys(messages).forEach(type=> { %>
+            <% if (messages[type].length> 0) { %>
+
+                <% messages[type].forEach(msg=> { %>
+                    <p class="flash-message flash-message--<%= type %>"><%= msg %></p>
+                        <% }); %>
+
+                            <% } %>
+                                <% }); %>

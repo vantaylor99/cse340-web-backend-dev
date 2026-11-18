@@ -28,7 +28,7 @@ VALUES                    ('BrightFuture Builders', 'A nonprofit focused on impr
 CREATE TABLE service_projects (
     project_id      SERIAL        PRIMARY KEY,
     organization_id INT           NOT NULL REFERENCES organization (organization_id),
-    title           VARCHAR (150) NOT NULL,
+    title           VARCHAR (200) NOT NULL,
     description     TEXT          NOT NULL,
     location        TEXT          NOT NULL,
     date            DATE          NOT NULL
