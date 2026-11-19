@@ -3,6 +3,7 @@
         <h1>
             <%= title %>
         </h1>
+        <p><a href="/new-category/">New Category</a></p>
 
         <ul>
             <% categories.forEach(category=> { %>
@@ -11,6 +12,5 @@
                     </a></li>
                 <% }); %>
         </ul>
-
     </main>
     <%- include('partials/footer') %>

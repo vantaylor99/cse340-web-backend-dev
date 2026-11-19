@@ -78,9 +78,6 @@ const processNewProjectForm = async (req, res) => {
         req.flash('error', `There was an error creating service project: ${title}`);
         res.redirect('/new-project');
     }
-
-
-
 }
 
 
@@ -93,7 +90,7 @@ const showEditProjectForm = async (req, res) => {
     res.render('edit-project', { title, projectDetails, organizations });
 }
 
-const processEditProjectform = async (req, res) => {
+const processEditProjectForm = async (req, res) => {
 
     const projectId = req.params.id
     const results = validationResult(req);
@@ -111,4 +108,4 @@ const processEditProjectform = async (req, res) => {
     res.redirect(`/project/${projectId}`);
 };
 
-export { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, projectValidation, showEditProjectForm, processEditProjectform }
+export { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, projectValidation, showEditProjectForm, processEditProjectForm }
