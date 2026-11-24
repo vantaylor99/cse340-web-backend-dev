@@ -17,6 +17,14 @@
             <li><a href="/organizations">Organizations</a></li>
             <li><a href="/projects">Projects</a></li>
             <li><a href="/categories">Service Project Categories</a></li>
+            <li class="nav-account">
+                <% if (isLoggedIn) { %>
+                    <a href="/logout">Logout</a>
+                <% } else { %>
+                    <a href="/register">Register</a>
+                    <a href="/login">Login</a>
+                <% } %>
+            </li>
         </ul>
     </nav>
     <% const messages=flash(); %>
@@ -24,8 +32,10 @@
             <% if (messages[type].length> 0) { %>
 
                 <% messages[type].forEach(msg=> { %>
-                    <p class="flash-message flash-message--<%= type %>"><%= msg %></p>
-                        <% }); %>
+                    <p class="flash-message flash-message--<%= type %>">
+                        <%= msg %>
+                    </p>
+                    <% }); %>
 
-                            <% } %>
-                                <% }); %>
+                        <% } %>
+                            <% }); %>

@@ -5,13 +5,14 @@ import { showOrganizationsPage, showOrganizationDetailsPage, showNewOrganization
 import { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, projectValidation, showEditProjectForm, processEditProjectForm } from './controllers/projects.js';
 import { processAssignCategoriesForm, processNewCategoryForm, showCategoriesPage, showCategoryDetailsPage, showEditCategoriesForm, showNewCategoryForm, categoryValidation, showEditCategoryForm, processEditCategoryForm } from './controllers/categories.js';
 import { testErrorPage } from './controllers/errors.js';
+import { processLoginForm, processLogout, processNewUserForm, showLoginForm, showUserRegistrationForm } from './controllers/users.js';
 
 const router = express.Router();
 
 router.get('/', showHomePage);
 router.get('/organizations', showOrganizationsPage);
 router.get('/new-organization', showNewOrganizationForm);
-// Route to handle new organization form submission
+// Route     to handle new organization form submission
 router.post('/new-organization', organizationValidation, processNewOrganizationForm);
 router.get('/edit-organization/:id', showEditOrganizationForm);
 router.post('/edit-organization/:id', organizationValidation, processEditOrganizationForm)
@@ -29,8 +30,14 @@ router.get('/edit-category/:id', showEditCategoryForm);
 router.post('/edit-category/:id', categoryValidation, processEditCategoryForm);
 router.get('/assign-categories/:projectId', showEditCategoriesForm);
 router.post('/assign-categories/:projectId', processAssignCategoriesForm)
-// Route for organization details page
 router.get('/organization/:id', showOrganizationDetailsPage);
+router.get('/register', showUserRegistrationForm);
+router.post('/register', processNewUserForm);
+router.get('/login', showLoginForm);
+router.post('/login', processLoginForm);
+router.get('/logout', processLogout);
+
+
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
