@@ -358,3 +358,41 @@ footer p {
     border-top: 1px solid #7792b4;
   }
 }
+
+/* Admin dashboard */
+.admin-dashboard {
+  max-width: 1050px;
+}
+
+.admin-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+}
+
+.admin-users-table {
+  width: 100%;
+  min-width: 440px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-users-table th,
+.admin-users-table td {
+  padding: 1rem;
+  border-top: 1px solid #dbe4ee;
+  overflow-wrap: anywhere;
+}
+
+.admin-users-table thead {
+  background-color: #ebf4ff;
+  color: #1a365d;
+}
+
+.admin-users-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.admin-users-table tbody tr:hover {
+  background-color: #edf2f7;
+}

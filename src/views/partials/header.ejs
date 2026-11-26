@@ -20,11 +20,16 @@
             <li class="nav-account">
                 <% if (isLoggedIn) { %>
                     <a href="/logout">Logout</a>
-                <% } else { %>
-                    <a href="/register">Register</a>
-                    <a href="/login">Login</a>
-                <% } %>
+                    <% } else { %>
+                        <a href="/register">Register</a>
+                        <a href="/login">Login</a>
+                        <% } %>
             </li>
+            <% if (user && user.role_name==='admin' ) { %>
+                <li>
+                    <a href="/admin-dashboard">Admin Dashboard</a>
+                </li>
+                <% } %>
         </ul>
     </nav>
     <% const messages=flash(); %>

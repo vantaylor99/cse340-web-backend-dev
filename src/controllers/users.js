@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { authenticateUser, createUser } from '../models/users.js';
+import { authenticateUser, createUser, getAllUsers } from '../models/users.js';
 
 
 const showUserRegistrationForm = async (req, res) => {
@@ -90,7 +90,7 @@ const requireRole = (role) => {
         // Check if user's role matches the required role
         if (req.session.user.role_name !== role) {
             req.flash('error', 'You do not have permission to access this page.');
-            return res.redirect('/');
+            return res.redirect('/dashboard');
         }
 
         // User has required role, continue
@@ -98,4 +98,15 @@ const requireRole = (role) => {
     };
 };
 
-export { showUserRegistrationForm, processNewUserForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole }
+const displayAllUsers = async (req, res) => {
+    const users = await getAllUsers();
+    const title = 'Admin Dashboard'
+    if (users) {
+        res.render('admin-dashboard', { title, users })
+    }
+    else {
+        req.flash('error', 'Unable to get users.')
+    }
+}
+
+export { showUserRegistrationForm, processNewUserForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole, displayAllUsers }

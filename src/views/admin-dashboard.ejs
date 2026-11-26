@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<main class="admin-dashboard">
+    <h1><%= title %></h1>
+    <div class="admin-table-wrapper">
+        <table class="admin-users-table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.role_name %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</main>
+<%- include('partials/footer') %>
