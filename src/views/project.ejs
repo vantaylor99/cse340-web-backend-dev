@@ -6,34 +6,38 @@
         <h2>
             <%= project.title %>
         </h2>
-        <p><a href="/edit-project/<%= project.project_id %>">Edit Project</a></p>
-        <p>
-            <strong>Description:</strong>
-            <%= project.description %>
-        </p>
-        <p>
-            <strong>Date:</strong>
-            <%= project.date.toLocaleDateString('en-US', { dateStyle: 'medium' }) %>
-        </p>
-        <p>
-            <strong>Location:</strong>
-            <%= project.location %>
-        </p>
-        <p><strong>Organization:</strong>
-            <a href="/organization/<%= project.organization_id %>">
-                <%= project.organization_name %>
-            </a>
-        </p>
+        <% if (user && user.role_name==='admin' ) { %>
+            <p><a href="/edit-project/<%= project.project_id %>">Edit Project</a></p>
+            <% } %>
+                <p>
+                    <strong>Description:</strong>
+                    <%= project.description %>
+                </p>
+                <p>
+                    <strong>Date:</strong>
+                    <%= project.date.toLocaleDateString('en-US', { dateStyle: 'medium' }) %>
+                </p>
+                <p>
+                    <strong>Location:</strong>
+                    <%= project.location %>
+                </p>
+                <p><strong>Organization:</strong>
+                    <a href="/organization/<%= project.organization_id %>">
+                        <%= project.organization_name %>
+                    </a>
+                </p>
 
-        <div class="category-tags">
-            <strong>Categories:</strong>
-            <% categories.forEach(category=> { %>
-                <a href="/category/<%= category.category_id %>">
-                    <%= category.name %>
-                </a>
-                <% }); %>
-        </div>
-        <p><a href="/assign-categories/<%= project.project_id %>">Edit Categories</a></p>
+                <div class="category-tags">
+                    <strong>Categories:</strong>
+                    <% categories.forEach(category=> { %>
+                        <a href="/category/<%= category.category_id %>">
+                            <%= category.name %>
+                        </a>
+                        <% }); %>
+                </div>
+                <% if (user && user.role_name==='admin' ) { %>
+                    <p><a href="/assign-categories/<%= project.project_id %>">Edit Categories</a></p>
+                    <% } %>
 
     </main>
     <%- include('partials/footer') %>

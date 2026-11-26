@@ -67,7 +67,7 @@ const requireLogin = (req, res, next) => {
     if (req.session?.user) {
         next();
     } else {
-        req.flash('error', 'You must be logged in to access that page. Please login again')
+        req.flash('error', 'You must be logged in to access that page. Please login.')
         res.redirect('/login')
     }
 }
@@ -79,4 +79,23 @@ const showDashboard = async (req, res) => {
     res.render('dashboard', { title, name: user.name, email: user.email });
 }
 
-export { showUserRegistrationForm, processNewUserForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard }
+const requireRole = (role) => {
+    return (req, res, next) => {
+        // Check if user is logged in first
+        if (!req.session || !req.session.user) {
+            req.flash('error', 'You must be logged in to access this page.');
+            return res.redirect('/login');
+        }
+
+        // Check if user's role matches the required role
+        if (req.session.user.role_name !== role) {
+            req.flash('error', 'You do not have permission to access this page.');
+            return res.redirect('/');
+        }
+
+        // User has required role, continue
+        next();
+    };
+};
+
+export { showUserRegistrationForm, processNewUserForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole }
